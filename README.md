@@ -13,7 +13,7 @@ Ten projekt to backendowa usługa dla systemu Zarządzania Relacjami z Klientami
 ## Technologie
 
 - Node.js / Express.js
-- MongoDB / PostgreSQL
+- MongoDB
 - JWT do uwierzytelniania
 
 ## Jak zacząć
