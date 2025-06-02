@@ -23,7 +23,7 @@ Ten projekt to backendowa usługa dla systemu Zarządzania Relacjami z Klientami
 3. Skonfiguruj zmienne środowiskowe.
 4. Uruchom serwer: `npm start`
 
-##CRM Frontend
+# CRM Frontend
 
 Bardzo prosty frontend z dashboarder oraz listą klientów i sprzedarzy
 
