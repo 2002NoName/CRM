@@ -25,7 +25,7 @@ Ten projekt to backendowa usługa dla systemu Zarządzania Relacjami z Klientami
 
 # CRM Frontend
 
-Bardzo prosty frontend z dashboarder oraz listą klientów i sprzedarzy
+Bardzo prosty frontend z dashboard-em oraz listą klientów i sprzedaży
 
 ## Technologie
 - React.js
