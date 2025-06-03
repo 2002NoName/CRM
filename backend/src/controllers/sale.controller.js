@@ -76,7 +76,7 @@ exports.deleteSale = async (req, res) => {
       return res.status(403).json({ message: 'Access denied' });
     }
 
-    await sale.remove();
+    await sale.deleteOne();
     res.json({ message: 'Sale removed' });
   } catch (err) {
     res.status(500).json({ message: err.message });

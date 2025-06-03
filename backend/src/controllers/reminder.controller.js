@@ -51,7 +51,7 @@ exports.deleteReminder = async (req, res) => {
     if (!reminder || reminder.owner.toString() !== req.user.id) {
       return res.status(403).json({ message: 'Access denied' });
     }
-    await reminder.remove();
+    await reminder.deleteOne();
     res.json({ message: 'Reminder deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });

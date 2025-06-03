@@ -32,7 +32,7 @@ exports.deleteNote = async (req, res) => {
     if (!note || note.owner.toString() !== req.user.id) {
       return res.status(403).json({ message: 'Access denied' });
     }
-    await note.remove();
+    await note.deleteOne();
     res.json({ message: 'Note deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });

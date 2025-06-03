@@ -74,7 +74,7 @@ exports.deleteClient = async (req, res) => {
       return res.status(403).json({ message: 'Access denied' });
     }
 
-    await client.remove();
+    await client.deleteOne();
     res.json({ message: 'Client removed' });
   } catch (err) {
     res.status(500).json({ message: err.message });

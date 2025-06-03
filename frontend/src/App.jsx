@@ -6,6 +6,7 @@ import ClientsPage from './pages/ClientsPage';
 import ClientDetails from './pages/ClientDetails';
 import Dashboard from './pages/Dashboard';
 import SalesPage from './pages/SalesPage';
+import UsersPage from './pages/UsersPage';
 
 export default function App() {
   const isLoggedIn = !!localStorage.getItem('token');
@@ -46,6 +47,12 @@ export default function App() {
         <Route
           path="/sales"
           element={isLoggedIn ? <SalesPage /> : <Navigate to="/login" replace />}
+        />
+
+        {/* Secured Users Page */}
+        <Route
+          path="/users"
+          element={isLoggedIn ? <UsersPage /> : <Navigate to="/login" replace />}
         />
 
 

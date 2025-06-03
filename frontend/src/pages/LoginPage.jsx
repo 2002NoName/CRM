@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
-import axios from '../api/axiosConfig'; // axios skonfigurowany z baseURL '/api'
+import axios from '../api/axiosConfig';
 import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
   const [isRegister, setIsRegister] = useState(false);
-
-  // Login
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
-  // Register
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const [registerName, setRegisterName] = useState('');
-
   const [error, setError] = useState(null);
-
   const navigate = useNavigate();
 
   async function handleLogin(e) {
@@ -25,9 +20,8 @@ export default function LoginPage() {
         email: loginEmail,
         password: loginPassword,
       });
-      // Save token to localStorage
       localStorage.setItem('token', res.data.token);
-      navigate('/clients'); // Redirect to clients page after successful login
+      navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Błąd logowania');
     }
@@ -37,7 +31,7 @@ export default function LoginPage() {
     e.preventDefault();
     setError(null);
     try {
-      await axios.post('api/auth/register', {
+      await axios.post('/auth/register', {
         email: registerEmail,
         password: registerPassword,
         name: registerName,
@@ -56,10 +50,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
         <h1 className="text-2xl font-bold mb-6 text-center">{isRegister ? 'Rejestracja' : 'Logowanie'}</h1>
-
-        {error && (
-          <p className="mb-4 text-red-600 text-center">{error}</p>
-        )}
+        {error && <p className="mb-4 text-red-600 text-center">{error}</p>}
 
         {isRegister ? (
           <form onSubmit={handleRegister} className="space-y-4">
