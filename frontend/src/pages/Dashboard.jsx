@@ -38,7 +38,7 @@ export default function Dashboard() {
     }
     fetchData();
 
-    // Pobierz rolę z tokenu JWT
+    // Fetch role from token
     const token = localStorage.getItem('token');
     if (token) {
       try {
@@ -50,7 +50,7 @@ export default function Dashboard() {
     }
   }, []);
 
-  // Grupowanie sprzedaży po miesiącach
+  // Group sales by month for chart
   const salesByMonth = sales.reduce((acc, sale) => {
     if (!sale.createdAt) return acc;
     const date = new Date(sale.createdAt);

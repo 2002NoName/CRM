@@ -12,7 +12,7 @@ export default function ClientsPage() {
   const [userRole, setUserRole] = useState('');
   const navigate = useNavigate();
 
-  // Pobierz klientów i rolę użytkownika po załadowaniu komponentu
+  // Fetch all clients and user role on component mount
   useEffect(() => {
     fetchClients();
     getRoleFromToken();
@@ -97,7 +97,7 @@ export default function ClientsPage() {
 
       <h1 className="text-3xl font-bold mb-6">Lista klientów</h1>
 
-      {/* Formularz dodawania/edycji tylko dla sales */}
+      {/* Add/Edit form only for sales role */}
       {userRole === 'sales' && (
         <form onSubmit={handleSubmit} className="mb-6 grid grid-cols-1 md:grid-cols-5 gap-4">
           <input
@@ -154,7 +154,7 @@ export default function ClientsPage() {
         </form>
       )}
 
-      {/* Tabela klientów */}
+      {/* Clients table */}
       <table className="min-w-full border border-gray-300 rounded overflow-hidden">
         <thead className="bg-gray-100">
           <tr>
@@ -174,7 +174,6 @@ export default function ClientsPage() {
               key={client._id}
               className="hover:bg-gray-50 cursor-pointer"
               onClick={e => {
-                // Nie przechodź do szczegółów jeśli kliknięto przycisk
                 if (e.target.tagName === 'BUTTON') return;
                 navigate(`/clients/${client._id}`);
               }}

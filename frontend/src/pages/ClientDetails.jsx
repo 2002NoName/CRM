@@ -14,7 +14,7 @@ export default function ClientDetails() {
   const [error, setError] = useState(null);
   const [userRole, setUserRole] = useState('');
 
-  // Formularze
+  // Forms
   const [noteContent, setNoteContent] = useState('');
   const [reminderTitle, setReminderTitle] = useState('');
   const [reminderDueDate, setReminderDueDate] = useState('');
@@ -60,7 +60,7 @@ export default function ClientDetails() {
     }
   };
 
-  // --- NOTATKI ---
+  // --- NOTES ---
   const handleNoteSubmit = async e => {
     e.preventDefault();
     try {
@@ -85,7 +85,7 @@ export default function ClientDetails() {
     }
   };
 
-  // --- PRZYPOMNIENIA ---
+  // --- REMINDERS ---
   const handleReminderSubmit = async e => {
     e.preventDefault();
     try {
@@ -121,7 +121,7 @@ export default function ClientDetails() {
     }
   };
 
-  // --- TRANSAKCJE ---
+  // --- SALES ---
   const handleSaleChange = e => {
     setSaleForm({ ...saleForm, [e.target.name]: e.target.value });
   };
@@ -188,10 +188,10 @@ export default function ClientDetails() {
         <div><span className="font-semibold">Status:</span> {client.status}</div>
       </div>
 
-      {/* Notatki i przypomnienia tylko dla roli sales */}
+      {/* Notes and Reminders only for sales role */}
       {userRole === 'sales' && (
         <>
-          {/* Notatki */}
+          {/* Notes */}
           <div className="mb-8">
             <h2 className="text-xl font-semibold mb-2">Notatki</h2>
             <form onSubmit={handleNoteSubmit} className="flex gap-2 mb-4">
@@ -229,7 +229,7 @@ export default function ClientDetails() {
             )}
           </div>
 
-          {/* Przypomnienia */}
+          {/* Reminders */}
           <div className="mb-8">
             <h2 className="text-xl font-semibold mb-2">Przypomnienia</h2>
             <form onSubmit={handleReminderSubmit} className="flex gap-2 mb-4 flex-wrap">
@@ -286,7 +286,7 @@ export default function ClientDetails() {
             )}
           </div>
 
-          {/* Transakcje */}
+          {/* Sales */}
           <div className="mb-8">
             <h2 className="text-xl font-semibold mb-2">Transakcje</h2>
             <form onSubmit={handleSaleSubmit} className="flex gap-2 mb-4 flex-wrap">
@@ -344,7 +344,7 @@ export default function ClientDetails() {
         </>
       )}
 
-      {/* Tabela transakcji widoczna dla wszystkich */}
+      {/* Sales table for all */}
       <div>
         <h2 className="text-xl font-semibold mb-2">Transakcje</h2>
         {sales.length === 0 ? (
