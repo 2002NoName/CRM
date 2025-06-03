@@ -6,9 +6,9 @@ Ten projekt to backendowa usługa dla systemu Zarządzania Relacjami z Klientami
 
 - Zarządzanie klientami i leadami
 - Śledzenie sprzedaży i raportowanie
-- Uwierzytelnianie i autoryzacja użytkowników
+- Uwierzytelnianie i autoryzacja użytkowników (JWT)
 - RESTful API
-- Integracja z bazą danych
+- Integracja z bazą danych MongoDB
 
 ## Technologie
 
@@ -19,19 +19,35 @@ Ten projekt to backendowa usługa dla systemu Zarządzania Relacjami z Klientami
 ## Jak zacząć
 
 1. Sklonuj repozytorium.
-2. Zainstaluj zależności: `npm install`
-3. Skonfiguruj zmienne środowiskowe.
-4. Uruchom serwer: `npm start`
+2. Skonfiguruj MongoDB:
+    - Utwórz bazę danych `crm-db`
+    - Utwórz kolekcję `clients`
+    - Utwórz kolekcję `notes`
+    - Utwórz kolekcję `reminders`
+    - Utwórz kolekcję `sales`
+    - Utwórz kolekcję `users`
+3. Zainstaluj zależności: `npm install`
+4. Skonfiguruj zmienne środowiskowe w pliku `.env`.
+5. Uruchom serwer: `npm start` lub `npm run dev`
+
+---
 
 # CRM Frontend
 
-Bardzo prosty frontend z dashboard-em oraz listą klientów i sprzedaży
+Prosty frontend z dashboardem oraz listą klientów, sprzedaży oraz pracowników.
 
 ## Technologie
+
 - React.js
-- React routes dom
-- Tailwind
+- React Router DOM
+- Tailwind CSS
 - Recharts
+
+## Jak zacząć
+
+1. Przejdź do katalogu `frontend`
+2. Zainstaluj zależności: `npm install`
+3. Uruchom aplikację: `npm start`
 
 ## Licencja
 
