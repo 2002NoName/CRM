@@ -14,7 +14,10 @@ app.use(express.json());
 // Auth Routes for Users
 app.use('/api/auth', require('./routes/auth.routes'));
 
-//Client Routes
+// User Routes
+app.use('/api/users', require('./routes/user.routes'));
+
+// Client Routes
 app.use('/api/clients', require('./routes/client.routes'));
 
 //Sale Routes
