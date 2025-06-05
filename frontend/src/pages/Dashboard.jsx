@@ -24,12 +24,14 @@ export default function Dashboard() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const [clientsRes, salesRes] = await Promise.all([
+        const [clientsRes, salesRes, usersRes] = await Promise.all([
           axios.get('/clients'),
           axios.get('/sales'),
+          axios.get('/users'),
         ]);
         setClients(clientsRes.data);
         setSales(salesRes.data);
+        setUsers(usersRes.data);
       } catch (err) {
         setError('Błąd podczas ładowania danych');
       } finally {
