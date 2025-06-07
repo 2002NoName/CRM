@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../api/axiosConfig';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import {
   BarChart,
   Bar,
@@ -19,6 +19,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userRole, setUserRole] = useState('');
+  const [roleChecked, setRoleChecked] = useState(false);
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function Dashboard() {
       try {
         const decoded = jwtDecode(token);
         setUserRole(decoded.role);
+        setRoleChecked(true);
       } catch {
         setUserRole('');
       }
@@ -81,7 +83,9 @@ export default function Dashboard() {
       month,
       count,
     }));
-
+  if (!roleChecked) return null;
+  if (!userRole) return <Navigate to="/login" />;
+  if (!userRole) return <p className="text-center mt-4">Ładowanie danych...</p>;
   if (loading) return <p className="text-center mt-4">Ładowanie danych...</p>;
   if (error) return <p className="text-center text-red-600 mt-4">{error}</p>;
 

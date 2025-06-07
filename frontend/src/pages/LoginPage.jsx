@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from '../api/axiosConfig';
-import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
   const [isRegister, setIsRegister] = useState(false);
@@ -10,7 +9,6 @@ export default function LoginPage() {
   const [registerPassword, setRegisterPassword] = useState('');
   const [registerName, setRegisterName] = useState('');
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -21,7 +19,7 @@ export default function LoginPage() {
         password: loginPassword,
       });
       localStorage.setItem('token', res.data.token);
-      navigate('/dashboard');
+      window.location.href = '/dashboard';
     } catch (err) {
       setError(err.response?.data?.message || 'Błąd logowania');
     }

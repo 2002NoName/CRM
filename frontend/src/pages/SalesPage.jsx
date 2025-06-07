@@ -1,31 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../api/axiosConfig';
 import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
 
 export default function SalesPage() {
   const [sales, setSales] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [userRole, setUserRole] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchSales();
-    getRoleFromToken();
   }, []);
 
-  const getRoleFromToken = () => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      try {
-        const decoded = jwtDecode(token);
-        setUserRole(decoded.role);
-      } catch {
-        setUserRole('');
-      }
-    }
-  };
+
 
   const fetchSales = async () => {
     setLoading(true);
