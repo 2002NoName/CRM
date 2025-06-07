@@ -26,9 +26,10 @@ Ten projekt to backendowa usługa dla systemu Zarządzania Relacjami z Klientami
     - Utwórz kolekcję `reminders`
     - Utwórz kolekcję `sales`
     - Utwórz kolekcję `users`
-3. Zainstaluj zależności: `npm install`
-4. Skonfiguruj zmienne środowiskowe w pliku `.env`.
-5. Uruchom serwer: `npm start` lub `npm run dev`
+3. Przejdź do katalogu `backend`
+4. Zainstaluj zależności: `npm install`
+5. Skonfiguruj zmienne środowiskowe w pliku `.env`.
+6. Uruchom serwer: `npm run dev`
 
 ---
 
