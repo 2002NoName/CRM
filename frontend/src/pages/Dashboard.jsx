@@ -20,25 +20,8 @@ export default function Dashboard() {
   const [error, setError] = useState(null);
   const [userRole, setUserRole] = useState('');
   const navigate = useNavigate();
-
+  
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const [clientsRes, salesRes, usersRes] = await Promise.all([
-          axios.get('/clients'),
-          axios.get('/sales'),
-          axios.get('/users'),
-        ]);
-        setClients(clientsRes.data);
-        setSales(salesRes.data);
-        setUsers(usersRes.data);
-      } catch (err) {
-        setError('Błąd podczas ładowania danych');
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
 
     // Fetch role from token
     const token = localStorage.getItem('token');
@@ -51,6 +34,37 @@ export default function Dashboard() {
       }
     }
   }, []);
+
+  useEffect(() => {
+      async function fetchData() {
+        setLoading(true);
+        try {
+          const requests = [
+            axios.get('/clients'),
+            axios.get('/sales'),
+          ];
+          if (userRole === 'admin' || userRole === 'manager') {
+            requests.push(axios.get('/users'));
+          }
+          const responses = await Promise.all(requests);
+          setClients(responses[0].data);
+          setSales(responses[1].data);
+          if (userRole === 'admin' || userRole === 'manager') {
+            setUsers(responses[2].data);
+          } else {
+            setUsers([]);
+          }
+        } catch (err) {
+          setError('Błąd podczas ładowania danych');
+        } finally {
+          setLoading(false);
+        }
+      }
+      if (userRole) {
+        fetchData();
+      }
+    }, [userRole]);
+
 
   // Group sales by month for chart
   const salesByMonth = sales.reduce((acc, sale) => {
